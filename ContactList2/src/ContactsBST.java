@@ -24,7 +24,7 @@ public class ContactsBST {
 			//If they are equal, contact found.
 			//If the name is greater, move to the right subtree
 			//If it's smaller move to the left subtree
-			recursiveSearch(root, name);
+			return recursiveSearch(root, name);
 		}
 	}
 	
@@ -73,6 +73,8 @@ public class ContactsBST {
 		//TODO: Display all the contacts in alphabetic order
 		//Hint: use the PrintInOrder function
 		PrintInOrder(root);
+
+		System.out.println();
 	}
 	
 	private void PrintInOrder(Tree n) {
@@ -86,7 +88,7 @@ public class ContactsBST {
 
 		PrintInOrder(n.left);
 
-		System.out.println();
+		System.out.println(String.format("Contact [%s: %s]", n.data.name, n.data.number));
 
 		PrintInOrder(n.right);
 	}

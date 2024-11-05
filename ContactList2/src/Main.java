@@ -6,6 +6,7 @@
  * @version 1.0
  */
 
+import javax.swing.plaf.synth.SynthUI;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.nio.file.Path;
@@ -18,9 +19,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
         //Read file for contacts
         //ArrayList<Contact> contacts = getContactsFromFile(input);
-        ContactsBST contacts = new ContactsBST();
+        ContactsBST contactTree = getContactsFromFile(input);
 
-        Boolean listSorted = false;
         Boolean programRunning = true;
 
         while(programRunning)
@@ -32,36 +32,18 @@ public class Main {
             switch (choice)
             {
                 case 1:
-                    if(!listSorted)
-                    {
-                        alphabeticSort(contacts);
-                        listSorted = true;
-                    }
-                    displayAlphabeticOrder(contacts);
+                    addContact(contactTree, input);
                     break;
                 case 2:
-                    if(!listSorted)
-                    {
-                        alphabeticSort(contacts);
-                        listSorted = true;
-                    }
-                    displayReverseOrder(contacts);
+
                     break;
                 case 3:
-                    System.out.print("Enter contact name: ");
-                    String contactToSearch = input.nextLine();
-                    System.out.println();
-
-                    if(listSorted)
-                    {
-                        contactSearchBinary(contacts, contactToSearch);
-                    }
-                    else
-                    {
-                        contactSearchSequential(contacts, contactToSearch);
-                    }
+                    contactTree.Print();
                     break;
                 case 4:
+
+                    break;
+                case 5:
                     System.out.println("Good Bye!");
                     programRunning = false;
                     break;
@@ -73,77 +55,34 @@ public class Main {
 
 
     }
-    static void contactSearchBinary(ArrayList<Contact> contacts, String searchName)
+
+    static void addContact(ContactsBST contactTree, Scanner input)
     {
-        int targetIndex = 0;
-        boolean found = false;
+        System.out.print("Enter new contact name: ");
 
-        int left = 0;
-        int right = contacts.size() - 1;
-
-        while(left <= right)
-        {
-            int mid = left + (right - left) / 2;
-
-            int compare = contacts.get(mid).getName().compareToIgnoreCase(searchName);
-
-            if(compare == 0)
-            {
-                targetIndex = mid;
-                found = true;
-                break;
-            }
-            else if (compare < 0)
-            {
-                    left = mid + 1;
-            }
-            else {
-                right = mid - 1;
-            }
-        }
-
-        if(found)
-        {
-            System.out.println("Contact " + contacts.get(targetIndex).toString());
-            System.out.println();
-        }
-        else
-        {
-            System.out.println("Contact not found.\n");
-        }
-    }
-
-    static void contactSearchSequential(ArrayList<Contact> contacts, String searchName)
-    {
-        for(int i = 0; i < contacts.size() - 1; i++)
-        {
-            if(contacts.get(i).name.compareToIgnoreCase(searchName) == 0)
-            {
-                System.out.println("Contact " + contacts.get(i).toString());
-                System.out.println();
-                return;
-            }
-        }
-
-        System.out.println("Contact not found.");
-    }
-
-    static void displayAlphabeticOrder(ArrayList<Contact> contacts)
-    {
-        for(int i = 0; i < contacts.size(); i++)
-        {
-            System.out.println(contacts.get(i).toString());
-        }
+        String name = input.nextLine();
 
         System.out.println();
+
+        System.out.print("Enter new contact number: ");
+
+        String number = input.nextLine();
+
+        System.out.println();
+
+        Contact contact = new Contact();
+        contact.setName(name);
+        contact.setNumber(number);
+
+        contactTree.Insert(contact);
     }
 
-    static void displayReverseOrder(ArrayList<Contact> contacts)
+    static void removeContact(ContactsBST contactTree, Scanner input)
     {
-        for(int i = contacts.size() - 1; i >= 0; i--)
-        {
-            System.out.println(contacts.get(i).toString());
-        }
+        System.out.print("Enter contact name to remove: ");
+
+        String name = input.nextLine();
+
         System.out.println();
     }
 
@@ -219,10 +158,11 @@ public class Main {
     {
         System.out.println("Contact List");
         System.out.println("------------");
-        System.out.println("1. Display contacts in alphabetical order");
-        System.out.println("2. Display contacts in reverse alphabetical order");
-        System.out.println("3. Search contacts");
-        System.out.println("4. Exit");
+        System.out.println("1. Add a contact");
+        System.out.println("2. Remove a contact");
+        System.out.println("3. Display contacts in alphabetical order");
+        System.out.println("4. Search a contact");
+        System.out.println("5. Exit");
         System.out.print("Enter your selection here: ");
     }
 

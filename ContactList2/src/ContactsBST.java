@@ -15,11 +15,9 @@ public class ContactsBST {
 	public Contact Search(String name) {
 		
 		if (root == null) {	//empty tree
-			//TODO
 			return null;
 		}
 		else {
-			//TODO: Search for the name. Start at the root.
 			//Compare the name the current contact's name.
 			//If they are equal, contact found.
 			//If the name is greater, move to the right subtree
@@ -31,7 +29,6 @@ public class ContactsBST {
 	public void Insert(Contact d) { 
 		
 		if (root == null) {	//empty tree, insert the first element
-			//TODO
 			root = new Tree(d);
 		}
 		else {
@@ -70,7 +67,6 @@ public class ContactsBST {
 	}
 	
 	public void Print() {
-		//TODO: Display all the contacts in alphabetic order
 		//Hint: use the PrintInOrder function
 		PrintInOrder(root);
 
@@ -78,7 +74,6 @@ public class ContactsBST {
 	}
 	
 	private void PrintInOrder(Tree n) {
-		//TODO: Display all the contacts in-order
 		//Hint: Recursion
 
 		if(n == null)

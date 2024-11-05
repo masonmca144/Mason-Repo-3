@@ -3,19 +3,13 @@
  *
  * @author
  * @copyright 2024 Howard Community College
- * @version 1.0
+ * @version 2.0
  */
 
 public class Contact
 {
     String name = "";
     String number = "";
-
-    /*public Contact(String name, String number)
-    {
-        this.name = name;
-        this.number = number;
-    }*/
 
     public String getName()
     {

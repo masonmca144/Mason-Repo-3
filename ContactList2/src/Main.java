@@ -1,9 +1,9 @@
 /**
- * Main - Display a menu and allow user to display a list of contacts / sort them
+ * Main - Display a menu and allow user to display a list of contacts / other functions associated
  *
  * @author
  * @copyright 2024 Howard Community College
- * @version 1.0
+ * @version 2.0
  */
 
 import javax.swing.plaf.synth.SynthUI;
@@ -18,7 +18,6 @@ public class Main {
         //Setup Scanner
         Scanner input = new Scanner(System.in);
         //Read file for contacts
-        //ArrayList<Contact> contacts = getContactsFromFile(input);
         ContactsBST contactTree = getContactsFromFile(input);
 
         Boolean programRunning = true;

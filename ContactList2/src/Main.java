@@ -35,13 +35,13 @@ public class Main {
                     addContact(contactTree, input);
                     break;
                 case 2:
-
+                    removeContact(contactTree, input);
                     break;
                 case 3:
                     contactTree.Print();
                     break;
                 case 4:
-
+                    searchContact(contactTree, input);
                     break;
                 case 5:
                     System.out.println("Good Bye!");
@@ -82,6 +82,30 @@ public class Main {
         System.out.print("Enter contact name to remove: ");
 
         String name = input.nextLine();
+
+        System.out.println();
+
+        contactTree.Remove(name);
+    }
+
+    static void searchContact(ContactsBST contactTree, Scanner input)
+    {
+        System.out.print("Enter contact name: ");
+
+        String name = input.nextLine();
+
+        System.out.println();
+
+        Contact contact = contactTree.Search(name);
+
+        if(contact != null)
+        {
+            System.out.println(String.format("Contact [%s: %s]", contact.getName(), contact.getNumber()));
+        }
+        else
+        {
+            System.out.println("Contact not found.");
+        }
 
         System.out.println();
     }
@@ -128,30 +152,6 @@ public class Main {
             }
         }
         return contacts;
-    }
-
-    private static void alphabeticSort(ArrayList<Contact> contacts)
-    {
-        for(int i = 0; i < contacts.size() - 1; i++)
-        {
-            int min = i;
-
-            for(int j = i + 1; j < contacts.size(); j++)
-            {
-                if(contacts.get(j).getName().compareTo(contacts.get(min).getName()) < 0)
-                {
-                    min = j;
-                }
-            }
-
-            if(min != i)
-            {
-                Contact temp = contacts.get(i);
-
-                contacts.set(i, contacts.get(min));
-                contacts.set(min, temp);
-            }
-        }
     }
 
     private static void displayMenu()

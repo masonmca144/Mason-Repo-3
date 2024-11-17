@@ -1,9 +1,9 @@
 /**
- * Main - Display a menu and allow user to display a list of contacts / other functions associated
+ * Main - Display a menu and allow user to display a list of contacts utilziing generics / other functions associated
  *
  * @author
  * @copyright 2024 Howard Community College
- * @version 2.0
+ * @version 3.0
  */
 
 import java.util.Scanner;

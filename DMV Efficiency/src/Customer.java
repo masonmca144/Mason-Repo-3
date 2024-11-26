@@ -1,3 +1,11 @@
+/**
+ * Customer - object for customers
+ *
+ * @author
+ * @copyright 2024 Howard Community College
+ * @version 1.0
+ */
+
 public class Customer
 {
     int ticketNumber;

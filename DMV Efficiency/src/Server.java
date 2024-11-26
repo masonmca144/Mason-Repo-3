@@ -1,3 +1,10 @@
+/**
+ * Server - object for servers
+ * @author
+ * @copyright 2024 Howard Community College
+ * @version 1.0
+ */
+
 public class Server implements Runnable
 {
     int serverNumber;

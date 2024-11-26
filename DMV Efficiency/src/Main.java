@@ -1,3 +1,11 @@
+/**
+ * Main - Create a queue of customers, use threads to allow multiple server to work simultaneously
+ *
+ * @author
+ * @copyright 2024 Howard Community College
+ * @version 1.0
+ */
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
